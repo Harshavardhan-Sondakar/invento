@@ -1,0 +1,507 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: black;
+    color: white;
+    overflow-y: auto;
+}
+
+.surprise-container {
+    display: flex;
+    justify-content: center;
+    /* Centers horizontally */
+    align-items: center;
+    /* Centers vertically */
+    width: 100vmax;
+    height: 100vh;
+    position: relative;
+}
+
+.present {
+    width: 410px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* Ensures inner elements stay centered */
+    justify-content: center;
+}
+
+/* Lid and Box: Fully Yellow */
+.box,
+.lid {
+    background-color: yellow;
+    /* Fully yellow box and lid */
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* Box */
+.box {
+    width: 400px;
+    height: 250px;
+    border: 4px solid #fff;
+    position: relative;
+    transition: transform 0.5s ease-out;
+    background-color: yellow;
+    /* Box is fully yellow */
+}
+
+/* Text Styling */
+.box-text {
+    position: absolute;
+    top: 47%;
+    /* Slightly above 50% to avoid overlap */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    z-index: 4;
+    /* Highest z-index to ensure visibility */
+    background-color: yellow;
+    /* Matches box background */
+    padding: 5px 10px;
+    /* Adds padding so text is readable */
+}
+
+/* Hide text on hover */
+.present:hover .box span:first-child {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.present:hover .box,
+.present:hover .lid {
+    opacity: 0;
+    /* Makes them transparent */
+    visibility: hidden;
+    /* Removes them from interaction */
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+
+/* Red Plus Sign Stripes on Box */
+.box::before,
+.box::after {
+    content: "";
+    position: absolute;
+    background-color: red;
+}
+
+/* Vertical Stripe */
+.box::before {
+    width: 50px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Horizontal Stripe */
+.box::after {
+    width: 100%;
+    height: 50px;
+    top: 48%;
+    /* Moves stripe slightly below center */
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+/* Lid */
+.lid {
+    width: 400px;
+    height: 70px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    background-color: #ffff00;
+    /* Same as box */
+    border: 4px solid #fff;
+    border-bottom: none;
+    transition: top ease-out 0.5s, transform ease-out 0.5s;
+}
+
+/* Make Lid Continue Vertical Stripe */
+.lid::before {
+    content: "";
+    position: absolute;
+    background-color: red;
+    width: 50px;
+    height: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* PDF Viewer */
+.pdf-container {
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.5s ease-out, transform 0.3s ease-out;
+    backdrop-filter: blur(10px);
+    /* Glassmorphism effect */
+    background: rgba(255, 255, 255, 0.2);
+    /* Semi-transparent background */
+    border-radius: 15px;
+    /* Rounded corners */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    /* Soft glow effect */
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    /* Subtle frosted border */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Show effect on hover */
+.present:hover .pdf-container {
+    opacity: 1;
+    transform: scale(1.05);
+    /* Slight zoom-in effect */
+}
+
+
+/* .pdf-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+
+.pdf-container::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+.present:hover .pdf-container::before {
+    opacity: 1;
+}
+
+
+.download-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    padding: 8px 15px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0px 4px 10px rgba(255, 118, 136, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.download-btn:hover {
+    box-shadow: 0px 6px 15px rgba(255, 118, 136, 0.7);
+} */
+
+
+/* .pdf-container {
+    position: absolute;
+    width: 400px;
+    height: 350px;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    justify-content: center;
+    align-items: center;
+} */
+
+.pdf-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.download-btn {
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    padding: 8px 15px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0px 4px 10px rgba(255, 118, 136, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effects */
+.present:hover .lid {
+    transform: translateY(-70px) rotateZ(-20deg);
+    /* Moves higher */
+    margin-left: -100px;
+}
+
+.present:hover .box {
+    transform: translateY(220px);
+}
+
+.present:hover .pdf-container {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Additional floating animation */
+@keyframes floating {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.present {
+    animation: floating 3s ease-in-out infinite;
+}
+
+
+.fullscreen-gif {
+    position: fixed;
+    /* Ensure it covers the whole screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    /* Optional: Slight overlay effect */
+    z-index: 9999;
+    /* Ensure it's on top of everything */
+    pointer-events: none;
+    /* Allow interaction with elements below */
+}
+
+.fullscreen-gif img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    /* Ensure the GIF scales properly */
+}
+
+@media screen and (max-width: 768px) {
+    .present {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .box {
+        height: 200px;
+    }
+
+    .lid {
+        height: 60px;
+    }
+
+    .box-text {
+        font-size: 16px;
+    }
+
+    .pdf-container {
+        height: 200px;
+        margin-left: -60px;
+    }
+
+    .download-btn {
+        bottom: -30px;
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 520px) {
+    .present {
+        margin-right: 30px;
+    }
+
+    .pdf-container {
+        height: 200px;
+        width: 400px;
+        margin-left: -50px;
+    }
+}
+
+@media (max-width: 510px) {
+    .present {
+        margin-right: 40px;
+    }
+
+    .pdf-container {
+        height: 180px;
+        width: 370px;
+        margin-left: -30px;
+    }
+}
+
+@media (max-width: 500px) {
+    .present {
+        margin-right: 50px;
+    }
+
+    .pdf-container {
+        height: 180px;
+        width: 370px;
+        margin-left: -20px;
+    }
+}
+
+@media (max-width: 490px) {
+    .present {
+        margin-right: 65px;
+    }
+
+    .pdf-container {
+        height: 180px;
+        width: 370px;
+        margin-left: -10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .present {
+        margin-right: 80px;
+    }
+
+    .pdf-container {
+        height: 180px;
+        width: 370px;
+        margin-left: -10px;
+    }
+}
+
+
+@media (max-width: 470px) {
+    .present {
+        margin-right: 90px;
+    }
+
+    .box {
+        height: 200px;
+        width: 300px;
+    }
+
+    .lid {
+        height: 60px;
+        width: 300px;
+    }
+}
+
+
+@media (max-width: 450px) {
+    .present {
+        margin-right: 110px;
+    }
+}
+
+
+@media (max-width: 440px) {
+    .present {
+        margin-right: 115px;
+    }
+}
+
+
+@media (max-width: 430px) {
+    .present {
+        margin-right: 125px;
+    }
+}
+
+
+@media (max-width: 410px) {
+    .present {
+        margin-right: 180px;
+    }
+
+    .box {
+        height: 200px;
+        width: 250px;
+    }
+
+    .lid {
+        height: 60px;
+        width: 250px;
+    }
+
+    .pdf-container {
+        height: 180px;
+        width: 330px;
+        margin-left: 30px;
+    }
+}
+
+
+@media (max-width: 370px) {
+    .present {
+        margin-right: 150px;
+    }
+
+    .pdf-container {
+        height: 180px;
+        width: 300px;
+        margin-left: 15px;
+    }
+}
+
+@media (max-width: 369px) {
+    .present {
+        margin-right: 185px;
+    }
+}
+
+@media (max-width: 360px) {
+    .present {
+        margin-right: 195px;
+    }
+}
+
+
+@media (max-width: 350px) {
+    .present {
+        margin-right: 205px;
+    }
+}
+
+@media (max-width: 340px) {
+    .present {
+        margin-right: 215px;
+    }
+
+    .pdf-container {
+        height: 180px;
+        width: 250px;
+        margin-left: 45px;
+    }
+}

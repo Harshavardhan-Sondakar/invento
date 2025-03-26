@@ -1,0 +1,97 @@
+.body3d {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  
+}
+
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.card-container {
+  perspective: 1200px;
+  flex: 0 1 calc(50% - 1rem);
+}
+
+.card {
+  height: 20rem;
+  width: 15rem;
+  position: relative;
+  border-radius: 15px;
+  transition: transform 1s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+}
+
+.card.rotated {
+  transform: rotateY(-180deg);
+}
+
+.card-contents {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  background-position: top;
+  background-size: cover;
+}
+
+.card-back {
+  background: #ffffff;
+  transform: rotateY(180deg);
+  background-size: cover;
+  position: relative;
+}
+
+.card-back::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1); /* Dark overlay (30% opacity) */
+  backdrop-filter: blur(3px); /* Adds a soft blur effect */
+}
+
+.card-depth {
+  transform: translateZ(50px) scale(0.98);
+  perspective: inherit;
+}
+
+h2, p {
+  color: #FFFFFF;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.cham {
+  text-shadow: 3px 3px 10px black;
+}
+
+@media (min-width: 1020px) {
+  .body3d {
+    justify-content: flex-start;
+  }
+
+  .card-container {
+    flex: 0 1 calc(25% - 1rem); /* Four cards per row on larger screens */
+  }
+
+  .cards-wrapper{
+    margin:2rem 1rem 1rem 1rem ;
+  }
+}

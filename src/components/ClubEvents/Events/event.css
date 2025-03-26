@@ -1,0 +1,751 @@
+/* ============================
+   Global Styles (Mobile-First)
+   ============================ */
+/* body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-color: black;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+
+/* ============================
+   Fireworks Animation
+   ============================ */
+.event_back {
+    width: 100%;
+    height: 100%;
+    background-image: url("/event_back_img.jpeg");
+    background-size: cover;
+    margin-top: 0;
+    filter: brightness(1.3);
+}
+
+@keyframes firework {
+    0% {
+        transform: translate(var(--x), var(--initialY));
+        width: var(--initialSize);
+        opacity: 10;
+    }
+
+    50% {
+        width: 0.5vmin;
+        opacity: 10;
+    }
+
+    100% {
+        width: var(--finalSize);
+        opacity: 0;
+    }
+}
+
+/* ============================
+   Firework Base Styles
+   ============================ */
+.firework,
+.firework::before,
+.firework::after {
+    --initialSize: 0.5vmin;
+    --finalSize: 55vmin;
+    --particleSize: 0.3vmin;
+    --color1: yellow;
+    --color2: khaki;
+    --color3: white;
+    --color4: lime;
+    --color5: gold;
+    --color6: mediumseagreen;
+    --y: -30vmin;
+    --x: -50%;
+    --initialY: 60vmin;
+    content: "";
+    animation: firework 2.5s infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, var(--y));
+    width: var(--initialSize);
+    aspect-ratio: 1;
+    filter: brightness(4) drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    animation: firework 2.5s infinite, twinkle 0.3s infinite alternate;
+
+    background:
+
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 0% 0%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 0%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 100%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 0% 100%,
+
+
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 50% 0%,
+        radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 50%,
+        radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 50% 100%,
+        radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 0% 50%,
+
+        /* bottom right */
+        radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 80% 90%,
+        radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 95% 90%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 90% 70%,
+        radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 60%,
+        radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 55% 80%,
+        radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 70% 77%,
+
+        /* bottom left */
+        radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 22% 90%,
+        radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 45% 90%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 70%,
+        radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 10% 60%,
+        radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 31% 80%,
+        radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 28% 77%,
+        radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 13% 72%,
+
+        /* top left */
+        radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 80% 10%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 95% 14%,
+        radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 90% 23%,
+        radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 100% 43%,
+        radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 85% 27%,
+        radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 77% 37%,
+        radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 60% 7%,
+
+        /* top right */
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 22% 14%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 45% 20%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 34%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 10% 29%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 31% 37%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 28% 7%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 13% 42%;
+    background-size: var(--initialSize) var(--initialSize);
+    background-repeat: no-repeat;
+}
+
+.firework::before {
+    --x: -50%;
+    --y: -50%;
+    --initialY: -50%;
+    /*   transform: translate(-20vmin, -2vmin) rotate(40deg) scale(1.3) rotateY(40deg); */
+    transform: translate(-50%, -50%) rotate(40deg) scale(1.3) rotateY(40deg);
+    /*   animation: fireworkPseudo 2s infinite; */
+}
+
+.firework::after {
+    --x: -50%;
+    --y: -50%;
+    --initialY: -50%;
+    /*   transform: translate(44vmin, -50%) rotate(170deg) scale(1.15) rotateY(-30deg); */
+    transform: translate(-50%, -50%) rotate(170deg) scale(1.15) rotateY(-30deg);
+    /*   animation: fireworkPseudo 2s infinite; */
+}
+
+.firework:nth-child(2) {
+    --x: 30vmin;
+    animation-delay: -0.2s;
+    /* Faster */
+}
+
+.firework:nth-child(2),
+.firework:nth-child(2)::before,
+.firework:nth-child(2)::after {
+    --color1: pink;
+    --color2: violet;
+    --color3: fuchsia;
+    --color4: orchid;
+    --color5: plum;
+    --color6: lavender;
+    --finalSize: 40vmin;
+    left: 30%;
+    top: 60%;
+    animation-delay: -0.25s;
+}
+
+.firework:nth-child(3) {
+    --x: -30vmin;
+    --y: -50vmin;
+    animation-delay: -0.3s;
+    /* Faster */
+}
+
+.firework:nth-child(3),
+.firework:nth-child(3)::before,
+.firework:nth-child(3)::after {
+    --color1: cyan;
+    --color2: lightcyan;
+    --color3: lightblue;
+    --color4: PaleTurquoise;
+    --color5: SkyBlue;
+    --color6: lavender;
+    --finalSize: 35vmin;
+    left: 70%;
+    top: 60%;
+    animation-delay: -0.4s;
+}
+
+.firework:nth-child(4) {
+    --x: 20vmin;
+    --y: -40vmin;
+    animation-delay: -0.5s;
+    /* Faster */
+}
+
+.firework:nth-child(4),
+.firework:nth-child(4)::before,
+.firework:nth-child(4)::after {
+    --color1: red;
+    --color2: orange;
+    --color3: darkorange;
+    --color4: tomato;
+    --color5: coral;
+    --color6: salmon;
+    --finalSize: 38vmin;
+    left: 50%;
+    top: 30%;
+    animation-delay: -0.4s;
+}
+
+.firework:nth-child(5) {
+    --x: 200vmin;
+    --y: 20vmin;
+
+    animation-delay: -0.5s;
+    /* Faster */
+}
+
+.firework:nth-child(5),
+.firework:nth-child(5)::before,
+.firework:nth-child(5)::after {
+    --color1: cyan;
+    --color2: lightblue;
+    --color3: deepskyblue;
+    --color4: dodgerblue;
+    --color5: royalblue;
+    --color6: blue;
+    --finalSize: 40vmin;
+    /* Slightly larger explosion */
+    left: 70%;
+    top: 30%;
+    animation-delay: -0.4s;
+}
+
+.firework:nth-child(6) {
+    --x: -600vmin;
+    /* Move left from right side */
+    --y: 20vmin;
+
+}
+
+.firework:nth-child(6),
+.firework:nth-child(6)::before,
+.firework:nth-child(6)::after {
+    --color1: cyan;
+    --color2: lightblue;
+    --color3: deepskyblue;
+    --color4: dodgerblue;
+    --color5: royalblue;
+    --color6: blue;
+    --finalSize: 42vmin;
+    /* Slightly larger explosion */
+    right: -200%;
+    /* Start from the right */
+    top: 30%;
+    animation-delay: -0.4s;
+    /* Faster */
+
+}
+
+/* ============================
+   Background and Overlay
+   ============================ */
+.fireworks-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Full viewport height */
+    width: 100vw;
+    /* Full viewport width */
+    background-image: url('/media.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.fireworks-background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+/* ============================
+   Event Info Section
+   ============================ */
+/* Apply a glassmorphism effect */
+.event-info {
+    position: relative;
+    /* background: rgba(255, 255, 255, 0.15); */
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 20px;
+    color: white;
+    max-width: 80%;
+    width: 600px;
+    min-height: 700px;
+    text-align: center;
+    z-index: 2;
+    box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.event-info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 15px 30px rgba(255, 255, 255, 0.3);
+}
+
+/* Smooth scrolling for event content */
+.event-content {
+    max-height: 550px;
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-width: thin;
+    color: white;
+    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+}
+
+.event-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.event-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+}
+
+/* -----------------------
+   Event Title (Container)
+   ----------------------- */
+.event-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgb(255, 189, 47);
+    /* Remove container animation if you prefer per-letter animations */
+    /* animation: fadeIn 1s ease-in-out;  */
+}
+
+/* -----------------------
+   Per-letter Animations
+   ----------------------- */
+.letter {
+    display: inline-block;
+    opacity: 0; /* Start hidden */
+}
+
+/* Fade from Top for individual letters */
+.fade-from-top {
+    animation: fadeFromTop 0.5s forwards;
+}
+
+@keyframes fadeFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* If needed, add other per-letter animations as well */
+/* Fade from Bottom */
+.fade-from-bottom {
+    animation: fadeFromBottom 0.5s forwards;
+}
+
+@keyframes fadeFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade from Left */
+.fade-from-left {
+    animation: fadeFromLeft 0.5s forwards;
+}
+
+@keyframes fadeFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Fade from Right */
+.fade-from-right {
+    animation: fadeFromRight 0.5s forwards;
+}
+
+@keyframes fadeFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* Event description with glowing effect */
+.event-description {
+    font-size: 1.3rem;
+    color: #ffffff;
+    text-align: center;
+    max-width: 90%;
+    padding: 15px 25px;
+    border-left: 4px solid #ff6f61;
+    border-right: 4px solid #ffcc70;
+    border-radius: 10px;
+    line-height: 1.8;
+    font-style: italic;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Schedule List */
+.event-schedule h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffcc00;
+}
+
+.event-schedule ul {
+    list-style: none;
+    padding: 0;
+}
+
+.event-schedule ul li {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+/* See More & Register Buttons */
+.see-more-btn,
+.register-btn {
+    padding: 14px 35px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0px 5px 10px rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.see-more-btn {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+}
+
+.see-more-btn:hover {
+    background: linear-gradient(90deg, #0056b3, #007bff);
+    box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+.register-btn {
+    background: linear-gradient(90deg, #28a745, #1e7e34);
+    color: white;
+}
+
+.register-btn:hover {
+    background: linear-gradient(90deg, #1e7e34, #28a745);
+    box-shadow: 0px 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+/* More info expansion */
+.more-text {
+    text-align: left;
+    margin-top: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-10px);
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+}
+
+.more-text.show {
+    max-height: 600px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* More info heading */
+.more-text h2 {
+    font-size: 1.5rem;
+    color: #ffcc00;
+    margin-bottom: 8px;
+}
+
+.more-text p,
+.more-text ul {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.more-text ul {
+    padding-left: 20px;
+}
+
+.more-text ul li {
+    margin-bottom: 5px;
+}
+
+/* Text animations */
+.letter {
+    display: inline-block;
+    opacity: 1;
+    transform: translateY(10px);
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+/* ============================
+   Media Queries for Desktop
+   ============================ */
+@media (min-width: 768px) {
+
+    /* Adjust fireworks for larger screens */
+    .firework {
+        --initialSize: 0.5vmin;
+        --finalSize: 45vmin;
+    }
+
+    .fireworks-background {
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Event Info Section (Larger Screens) */
+    .event-info {
+        max-width: 80%;
+        /* Increase width as needed */
+        width: 900px;
+        /* You can set a fixed width */
+        padding: 20px;
+        min-height: 250px;
+        /* Reduce min-height for desktop */
+        border-radius: 15px;
+        
+    }
+
+    .event-title {
+        font-size: 2rem;
+    }
+
+    .event-description {
+        font-size: 1.2rem;
+    }
+
+    .event-schedule h2 {
+        font-size: 1.5rem;
+    }
+
+    .event-schedule ul li {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .fireworks-background {
+        padding: 50px;
+    }
+
+    .firework {
+        --finalSize: 50vmin;
+    }
+
+    .event-info {
+        padding: 15px;
+        /* Adjust padding */
+        min-height: 220px;
+        /* Further reduce height for larger screens */
+    }
+
+    .event-title {
+        font-size: 2.5rem;
+    }
+
+    .event-description {
+        font-size: 1.3rem;
+    }
+
+    .event-schedule h2 {
+        font-size: 1.7rem;
+    }
+
+    .event-schedule ul li {
+        font-size: 1.2rem;
+    }
+}
+
+/* ============================
+   Media Queries for Tablets
+   ============================ */
+@media (max-width: 1024px) {
+    .event-info {
+        width: 90%;
+        /* Adjust width for tablets */
+        min-height: 600px;
+        /* Reduce height */
+        padding: 15px;
+    }
+
+    .event-title {
+        font-size: 2.3rem;
+    }
+
+    .event-description {
+        font-size: 1.1rem;
+    }
+
+    .event-schedule h2 {
+        font-size: 1.3rem;
+    }
+
+    .event-schedule ul li {
+        font-size: 1rem;
+    }
+}
+
+/* ============================
+   Media Queries for Mobile Devices
+   ============================ */
+@media (max-width: 768px) {
+    .event-info {
+        width: 95%;
+        min-height: auto;
+        padding: 15px;
+    }
+
+    .event-title {
+        font-size: 2rem;
+    }
+
+    .event-description {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+
+    .event-schedule h2 {
+        font-size: 1.2rem;
+    }
+
+    .event-schedule ul li {
+        font-size: 0.9rem;
+        padding: 4px;
+    }
+
+    .see-more-btn,
+    .register-btn {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+}
+
+/* ============================
+   Media Queries for Small Mobile Devices
+   ============================ */
+@media (max-width: 480px) {
+    .event-info {
+        width: 100%;
+        padding: 10px;
+        min-height: auto;
+        border-radius: 10px;
+    }
+
+    .event-title {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .event-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        padding: 8px 12px;
+    }
+
+    .event-schedule h2 {
+        font-size: 1rem;
+    }
+
+    .event-schedule ul li {
+        font-size: 0.85rem;
+    }
+
+    .see-more-btn,
+    .register-btn {
+        padding: 10px 25px;
+        font-size: 13px;
+    }
+}

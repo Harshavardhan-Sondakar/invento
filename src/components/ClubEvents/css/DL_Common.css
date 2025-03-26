@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;700&display=swap");
+
+/* Main Container */
+.dl-cardCon {
+    background-image: url("/cards_back.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(1.2);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* Prevents scrolling */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dl-stack-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+    /* Adds depth */
+    overflow: hidden;
+    /* Ensures no extra scrolling */
+}
+
+/* Individual Card */
+.dl-stack-container .dl-stack-card {
+    position: absolute;
+    width: 240px;
+    height: 320px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    /* Glassmorphism effect */
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 8px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+    transform-origin: 50% 100%;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transform: rotate(calc(var(--i) * -2deg)) translate(calc(var(--i) * -5px), 0);
+}
+
+/* Ensure images fit properly */
+.dl-stack-container .dl-stack-card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+
+/* Spreading Effect: Cards fan out smoothly on hover */
+.dl-stack-container:hover .dl-stack-card {
+    transform: rotate(calc(var(--i) * 7deg)) translate(calc(var(--i) * 50px), -50px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Active card effect: Tapped card stays up until another is tapped */
+.dl-stack-container .dl-stack-card.active {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transform: rotate(calc(var(--i) * 0deg)) translate(calc(var(--i) * 30px), -60px) scale(1.2);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+/* Neon Glow Effect */
+.dl-stack-container .dl-stack-card:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 100px 100px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 204, 255, 0.6);
+}
+
+/* Floating Effect */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.dl-stack-container {
+    animation: float 3s infinite ease-in-out;
+}
+
+/* Tilt Effect */
+@keyframes tilt {
+    0% {
+        transform: rotateY(-5deg) rotateX(8deg);
+    }
+    50% {
+        transform: rotateY(5deg) rotateX(-8deg);
+    }
+    100% {
+        transform: rotateY(-5deg) rotateX(8deg);
+    }
+}
+
+.dl-stack-container:hover {
+    animation: tilt 2s infinite alternate ease-in-out;
+}
+
+.dl-hold-note {
+    text-align: center;
+    font-size: 1rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    width: 200px;
+    border-radius: 8px;
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}

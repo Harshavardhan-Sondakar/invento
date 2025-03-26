@@ -1,0 +1,107 @@
+/* General Footer Styling */
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Grid for better layout on larger screens */
+.footer-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Logo and Title */
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-image {
+  width: 50px;
+  height: auto;
+}
+
+/* Description Text */
+.footer-description {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Contact Section */
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-contact-item,
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Centers the text */
+  gap: 8px;
+}
+
+/* Social Media Links */
+.social-links {
+  margin-top: 15px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  text-decoration: none;
+  color: orange;
+  font-weight: bold;
+}
+
+.social-link:hover {
+  color: #f59e0b;
+}
+
+/* Copyright Section */
+.copyright {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* Name Container */
+.name-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  /* Space between names */
+  margin: 10px 0;
+}
+
+.name a {
+  color: purple;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.name a:hover {
+  text-decoration: underline;
+  color: #c084fc;
+  /* Light purple on hover */
+}
