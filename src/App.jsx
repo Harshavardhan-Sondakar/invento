@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import Banner from './components/Banner';
 import Card3DRotation from './components/Cards3d';
-import Navbar from './components/Navbar';
+import Navbar from './components/NavBar.jsx';
 import Ballpit from './components/Ballpit';
 import Loading from "./components/Loading.jsx"
 
